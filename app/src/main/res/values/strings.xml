@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">GloboFly</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="description">Description</string>
+    <string name="country_name">Country Name</string>
+    <string name="city_name">City Name</string>
+    <string name="just_a_image">Just a Image</string>
+    <string name="session_expired">Your session has expired. Please Login again.</string>
+    <string name="failed_to_retrive">Failed to retrieve Details</string>
 </resources>
