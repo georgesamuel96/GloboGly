@@ -27,4 +27,7 @@ interface DestinationService {
                           @Field("city") city: String,
                           @Field("description") desc: String,
                           @Field("country") country: String): Call<Destination>
+
+    @DELETE("destination/{id}")
+    fun deleteDestination(@Path("id") id: Int): Call<Unit>
 }

@@ -111,9 +111,25 @@ class DestinationDetailActivity : AppCompatActivity() {
 
 		btn_delete.setOnClickListener {
 
-            // To be replaced by retrofit code
-            SampleData.deleteDestination(id)
-            finish() // Move back to DestinationListActivity
+			val destinationService = ServiceBuilder.buildService(DestinationService::class.java)
+			val requestCall = destinationService.deleteDestination(id)
+			requestCall.enqueue(object: retrofit2.Callback<Unit> {
+				override fun onFailure(call: Call<Unit>, t: Throwable) {
+					Toast.makeText(this@DestinationDetailActivity, "Error Occurred $t", Toast.LENGTH_LONG).show()
+				}
+
+				override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+					if(response.isSuccessful){
+						Toast.makeText(this@DestinationDetailActivity, getString(R.string.successfully_deleted),
+							Toast.LENGTH_LONG).show()
+						finish()
+					}
+					else {
+						Toast.makeText(this@DestinationDetailActivity, getString(R.string.failed_to_delete_item)
+							, Toast.LENGTH_LONG).show()
+					}
+				}
+			})
 		}
 	}
 
