@@ -10,4 +10,6 @@
     <string name="failed_to_retrive">Failed to retrieve Details</string>
     <string name="failed_to_add_item">Failed to add item</string>
     <string name="successfully_added">Successfully added !</string>
+    <string name="successfully_updated">Item updated successfully</string>
+    <string name="failed_to_update_item">Failed to update item</string>
 </resources>

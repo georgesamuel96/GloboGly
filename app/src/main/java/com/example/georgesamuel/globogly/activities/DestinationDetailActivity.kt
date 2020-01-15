@@ -85,8 +85,25 @@ class DestinationDetailActivity : AppCompatActivity() {
             destination.description = description
             destination.country = country
 
-            SampleData.updateDestination(destination);
-            finish() // Move back to DestinationListActivity
+            val destinationService = ServiceBuilder.buildService(DestinationService::class.java)
+            val requestCall = destinationService.updateDestination(id, city, description, country)
+            requestCall.enqueue(object: retrofit2.Callback<Destination>{
+                override fun onFailure(call: Call<Destination>, t: Throwable) {
+                    Toast.makeText(this@DestinationDetailActivity, "Error Occurred $t", Toast.LENGTH_LONG).show()
+                }
+
+                override fun onResponse(call: Call<Destination>, response: Response<Destination>) {
+                    if(response.isSuccessful){
+                        Toast.makeText(this@DestinationDetailActivity, getString(R.string.successfully_updated),
+                            Toast.LENGTH_LONG).show()
+                        finish()
+                    }
+                    else {
+                        Toast.makeText(this@DestinationDetailActivity, getString(R.string.failed_to_update_item)
+                            , Toast.LENGTH_LONG).show()
+                    }
+                }
+            })
 		}
 	}
 
