@@ -6,4 +6,3 @@ You can add your favorite city and some descriptions about it
 # Features
 Using Retrofit to API Request </br>
 Material design components </br>
-Image Picker Library
