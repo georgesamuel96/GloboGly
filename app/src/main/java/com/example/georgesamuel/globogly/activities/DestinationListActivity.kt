@@ -38,6 +38,10 @@ class DestinationListActivity : AppCompatActivity() {
 	private fun loadDestinations() {
 		val destinationService: DestinationService = ServiceBuilder.buildService(DestinationService::class.java)
 		val requestCall = destinationService.getDestinationList()
+//		val filter = HashMap<String, String>()
+//		filter["country"] = "USA"
+//		filter["count"] = "1"
+//		val requestCall = destinationService.getDestinationList(filter)
 		requestCall.enqueue(object : Callback<List<Destination>> {
 			override fun onFailure(call: Call<List<Destination>>, t: Throwable) {
 				Toast.makeText(this@DestinationListActivity, "Error Occurred $t", Toast.LENGTH_LONG).show()
